@@ -4,11 +4,9 @@
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-
+  - https://github.com/hrr41-fec-frieza/mooviesdb-user-reviews
+  - https://github.com/hrr41-fec-frieza/top-video-player
+  - https://github.com/hrr41-fec-frieza/mooviesdb-photo-carousel
 ## Table of Contents
 
 1. [Usage](#Usage)
