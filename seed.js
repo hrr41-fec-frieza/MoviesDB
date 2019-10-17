@@ -42,7 +42,7 @@ var newMovies = [
   }
 ]
 
-var saves = 0;
+
 for (var i = 0; i < newMovies.length; i++) {
 
   var thisMovie = new Movie(newMovies[i]);
@@ -51,7 +51,5 @@ for (var i = 0; i < newMovies.length; i++) {
     if (err) {
       console.log("Error saving movie: ", error)
     }
-    saves++;
-
   });
 }
