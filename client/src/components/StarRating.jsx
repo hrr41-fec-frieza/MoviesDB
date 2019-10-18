@@ -1,43 +1,73 @@
 import React, {Componenet} from 'react';
+import styled from 'styled-components';
 
 
 const RatingBar = styled.div`
-  background-color: pink;
+  border: 1px solid #efefef;
+  border-radius: 6px;
+  padding: 3px 3px 8px 4px;
+  width: 198px;
+  height: 13px;
+  font-size: 11px;
+  margin: 3px;
+
 `
 
 const Stars = styled.div`
-  border: 1px solid blue;
+  font-size: 15px;
+  float: left;
+
+
+`
+const Star = styled.span`
+  padding: 6px 1px 6px 1px;
+`
+const Rating = styled.a`
+  color: orange;
+  margin-left: 5px;
+  text-align: right;
+  font-weight: bold;
+  color: #a58600;
+  font-size: 14px;
+
+`
+
+const TopRating = styled.a`
+  color: #CCC;
+  font-size: 14px;
+
 `
 
 
-function StarRating(props) {
+class StarRating extends React.Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      rating: 0
+      rating: 8.5
     }
-
   }
 
-  render (
+  render () {
     return (
       <RatingBar>
         <Stars>
-          <span id="star1">☆</span>
-          <span id="star2">☆</span>
-          <span id="star3">☆</span>
-          <span id="star4">☆</span>
-          <span id="star5">☆</span>
-          <span id="star6">☆</span>
-          <span id="star7">☆</span>
-          <span id="star8">☆</span>
-          <span id="star9">☆</span>
-          <span id="star10">☆</span>
+          <Star id="star1">&#9734;</Star>
+          <Star id="star2">&#9734;</Star>
+          <Star id="star3">&#9734;</Star>
+          <Star id="star4">&#9734;</Star>
+          <Star id="star5">&#9734;</Star>
+          <Star id="star6">&#9734;</Star>
+          <Star id="star7">&#9734;</Star>
+          <Star id="star8">&#9734;</Star>
+          <Star id="star9">&#9734;</Star>
+          <Star id="star10">&#9734;</Star>
         </Stars>
+        <Rating>{this.state.rating}</Rating>
+        <TopRating>/10</TopRating>
       </RatingBar>
     )
-  )
+  }
 
 }
 
