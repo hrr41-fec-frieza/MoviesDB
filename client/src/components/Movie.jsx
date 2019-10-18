@@ -1,16 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Movie = (props) => {
+
+
+const OneMovie = styled.div`
+  width:30%;
+  margin: auto;
+`
+
+
+function Movie (props) {
   var pic = props.movie.pictureURL;
   var id = props.key;
   var clicky = props.clicky;
 
-
   return (
-    <div className="moviepic"  key={1}  onClick={clicky}>
-      <img src={pic} height="50" width="60" />
-    </div>
+    <OneMovie  onClick={clicky} >
+      <img src={pic} height="113" width="76" />
+    </OneMovie>
   )
 
 }
