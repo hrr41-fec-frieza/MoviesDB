@@ -72,3 +72,11 @@ class StarRating extends React.Component {
 }
 
 export default StarRating;
+
+// const Moviee = styled.div`
+//   background-color: green;
+//   &:hover{
+//     background-color: red;
+//     margin: 5px;
+//   }
+// `;
