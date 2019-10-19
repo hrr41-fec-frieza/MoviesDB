@@ -3,12 +3,8 @@ import styled from 'styled-components';
 import axios from 'axios';
 import { ThemeProvider } from 'styled-components';
 
-import Movie from './Movie.jsx';
+import Movies from './Movies.jsx';
 import Current from './Current.jsx';
-
-// const theme = {
-//   color: "red",
-// }
 
 const MainContainer = styled.div`
   width: 625px;
@@ -61,15 +57,14 @@ const PageTurners = styled.div`
   justify-content: center;
 `
 
-const PageTurnLeft = styled.a`
-  color: #CCC;
+const PageTurnLeft = styled.span`
+  color: ${props => props.page === 'left' ? '#CCC' : 'blue'};
   margin-right: 5px;
 `
 
-const PageTurnRight = styled.a`
-  color: blue;
+const PageTurnRight = styled.span`
+  color: ${props => props.page === 'left' ? 'blue' : '#CCC'};
   margin-left: 5px;
-
 `
 
 
@@ -84,6 +79,9 @@ class Main extends React.Component{
 
     }
     this.clickMovie = this.clickMovie.bind(this);
+    this.clickPageLeft = this.clickPageLeft.bind(this);
+    this.clickPageRight = this.clickPageRight.bind(this);
+    this.clickNextMovie = this.clickNextMovie.bind(this);
   }
 
   getAllMovies() {
@@ -92,8 +90,12 @@ class Main extends React.Component{
       .then(response => {
         if (response.status === 200) {
 
+          var first = response.data[0];
+          var leftPage = response.data.slice(0, 6);
+          var rightPage = response.data.slice(6, 12);
+
           this.setState({
-            current:response.data[0],
+            current: first,
             movies: response.data.splice(1)
           });
         }
@@ -103,18 +105,52 @@ class Main extends React.Component{
 
   clickMovie(e) {
     e.preventDefault();
+    var movieId = e.target.id;
 
-    var key = e.target.key;
-    console.log("e.target.key---> " + e.target.key );
-    // console.log("type of e.target.movie---> " + typeof e.target.movie );
-    // console.log("e.target.index---> " + e.target.index );
+    var newCurrent = (this.state.displayPage === 'left' ? this.state.leftPageMovies.find( ({ _id }) => _id === movieId) : this.state.rightPageMovies.find( ({ _id }) => _id === movieId));
 
-    // var updatedMovies = this.state.movies;
-    // updatedMovies.push(this.state.current);
-    // var updatedCurrent = e.target.value;
+    this.setState({
+      current: newCurrent
+    })
+  }
 
-    // console.log(updatedMovies);
-    // console.log(updatedCurrent);
+  clickNextMovie(e) {
+
+    var currentIndex = this.state.displayPage === 'left' ? this.state.leftPageMovies.indexOf(this.state.current) : this.state.rightPageMovies.indexOf(this.state.current);
+
+    var next = this.state.displayPage === 'left' ? this.state.leftPageMovies[currentIndex + 1] : this.state.rightPageMovies[currentIndex + 1];
+
+    if (next === undefined) {
+      this.state.displayPage === 'left' ?
+        this.setState({
+          displayPage: 'right',
+          current: this.state.rightPageMovies[0]
+        }) : this.setState({
+            displayPage: 'left',
+            current: this.state.leftPageMovies[0]
+        })
+    } else {
+      this.setState({
+        current: next
+      })
+    }
+
+  }
+
+  clickPageRight(e) {
+    e.preventDefault();
+
+    this.setState({
+      displayPage: 'right'
+    })
+  }
+
+  clickPageLeft(e) {
+    e.preventDefault();
+
+    this.setState({
+      displayPage: 'left'
+    })
   }
 
   componentDidMount(){
@@ -126,7 +162,7 @@ class Main extends React.Component{
       return null;
     } else {
       return (
-        <Current id='current' movie={this.state.current}/>
+        <Current id='current' movie={this.state.current} click={this.clickNextMovie}/>
       )
     }
   }
@@ -142,12 +178,10 @@ class Main extends React.Component{
         <MainContainer className="maincomponent">
           <RelatedDiv>
             <RelatedMovies>
-              {this.state.movies.map((movie, i) =>
-                <Movie key={i} movie={movie} clicky={this.clickMovie} />
-              )}
+              <Movies click={this.clickMovie} movies={this.state.displayPage === 'left' ? this.state.leftPageMovies : this.state.rightPageMovies} />
               <PageTurners>
-                <PageTurnLeft>◄ Prev 6 </PageTurnLeft>
-                <PageTurnRight> Next 6  ►</PageTurnRight>
+                <PageTurnLeft onClick={this.clickPageLeft} page={this.state.displayPage}>◄ Prev 6 </PageTurnLeft>
+                <PageTurnRight onClick={this.clickPageRight} page={this.state.displayPage}> Next 6  ►</PageTurnRight>
               </PageTurners>
 
             </RelatedMovies>
