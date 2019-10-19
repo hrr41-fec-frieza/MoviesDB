@@ -10,6 +10,7 @@ const CurrentMovie =styled.div`
   margin-left: 10px;
   display:flex;
   flex-direction: column;
+  box-shadow: 3px 3px 5px #B0B0B0;
 `
 
 const Button = styled.button`
@@ -26,6 +27,9 @@ const MovieInfo = styled.div`
   height: 265px;
   margin: 5px;
   padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 `
 
 const CurrentDiv = styled.div`
@@ -35,31 +39,44 @@ const CurrentDiv = styled.div`
   margin-top: 0;
   display:flex;
 `
-const Title = styled.a`
-  width: auto;
-  height: auto;
+const Title = styled.span`
+  width: 126px;
+  height: 15px;
+  margin: 1px 5px;
+  font-size: 13px;
+  float: left;
   color: #136CB2;
   font-weight: bolder;
   font-family: Verdana, Arial, sans-serif;
 
 `
 const Year = styled.span`
+  width:46px;
+  height: 15px;
+  margin: 1px 5px;
   font-size: 13px;
   line-height: 13px;
   color: #999;
+  float: left;
   font-family: Verdana, Arial, sans-serif;
 `
+const TitleYear = styled.div`
+  width: 215px;
+  height: 24px;
+  margin-bottom: 5px;
+`
+
 const Rating = styled.span`
   color: #999;
-  height: 13px;
   width: 44px;
   color: #999;
   border: 1px solid #999;
   border-radius: 3px;
   font-family: Verdana, Arial, sans-serif;
   font-weight: bold;
-  padding: 1px;
-  margin: 3px;
+  font-size: 16px;
+  margin: 3px 3px;
+  padding: 0;
 `
 const Genre = styled.span`
   font-size: 13px;
@@ -67,6 +84,11 @@ const Genre = styled.span`
   font-family: Verdana, Arial, sans-serif;
   margin: 5px;
 
+`
+
+const RatingGenre = styled.div`
+  flex-basis: content;
+  margin: 3px;
 `
 
 const Description = styled.p`
@@ -92,7 +114,6 @@ const Stars = styled.div`
   font-size: 11px;
   margin:0px;
   padding:0px;
-
 `
 
 function Current (props) {
@@ -107,18 +128,24 @@ function Current (props) {
   var director = props.movie.director;
   var movieStars = props.movie.stars;
 
+  var click = props.click;
+
   return (
     <CurrentDiv>
       <CurrentMovie id='current'>
-        <img src={picture} height="100%" width="100%"/>
+        <img src={picture} height="100%" width="100%" />
         <Button>Add to Watchlist</Button>
-        <Button> Next >> </Button>
+        <Button onClick={click}> Next >> </Button>
       </CurrentMovie>
       <MovieInfo>
-        <Title>{title} </Title>
-        <Year>({year})</Year>
-        <Rating>{rating}</Rating>
-        <Genre>{genre}</Genre>
+        <TitleYear>
+          <Title>{title} </Title>
+          <Year>({year})</Year>
+        </TitleYear>
+        <RatingGenre>
+          <Rating>{rating}</Rating>
+          <Genre>{genre}</Genre>
+        </RatingGenre>
         <StarRating />
         <Description>{description}</Description>
         <Directors><b>Directors: </b>{director}</Directors>
