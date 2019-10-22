@@ -9,7 +9,7 @@
   },
   "scripts": {
     "build": "webpack -d --watch",
-    "start": "nodemon server/index.js -w server",
+    "start": "node server/index.js -w server",
     "start:seed": "node seed.js",
     "test": "jest --watch"
   },
@@ -36,16 +36,19 @@
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.6",
+    "css-loader": "^3.2.0",
     "dotenv": "^8.2.0",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
     "react-test-renderer": "^16.10.2",
+    "react-transition-group": "^4.3.0",
+    "style-loader": "^1.0.0",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.1.1",
     "webpack-dev-server": "^3.1.8"
   },
   "jest": {
-    "setupFilesAfterEnv": ["<rootDir>client/src/setupTests.js"]
+    "setupFilesAfterEnv": [
+      "<rootDir>client/src/setupTests.js"
+    ]
   }
-
-
 }

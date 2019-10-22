@@ -2,11 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 
 const MoviesDiv = styled.div`
-  width:30%;
-  margin: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 246px;
+  height: 238px;
 `
 const Movie = styled.div`
-
+  width: 30%;
+  margin: auto;
 `
 
 function Movies (props) {

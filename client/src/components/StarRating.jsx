@@ -3,10 +3,14 @@ import styled from 'styled-components';
 
 
 const RatingBar = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: stretch;
   border: 1px solid #efefef;
   border-radius: 6px;
   padding: 3px 3px 8px 4px;
-  width: 198px;
+  width: auto;
   height: 13px;
   font-size: 11px;
   margin: 3px;
@@ -21,7 +25,16 @@ const Stars = styled.div`
 `
 const Star = styled.span`
   padding: 6px 1px 6px 1px;
+  font-size: 8px;
+  padding-bottom: 5px;
 `
+const EmptyStar = styled.span`
+  padding: 6px 1px 6px 1px;
+  font-size: 13px;
+  margin-bottom: 5px;
+
+`
+
 const Rating = styled.a`
   color: orange;
   margin-left: 5px;
@@ -35,39 +48,50 @@ const Rating = styled.a`
 const TopRating = styled.a`
   color: #CCC;
   font-size: 14px;
-
+  padding-bottom: 5px;
 `
 
 
-class StarRating extends React.Component {
-  constructor(props) {
-    super(props)
+function StarRating (props) {
+  var rating = props.rating;
+  var click = props.clickStar;
+  var movieId = props.movieId;
 
-    this.state = {
-      rating: 8.5
+  var stars = [];
+
+    var i = 0;
+    while (i < rating) {
+      var starId = i;
+      stars.push(
+        <Star id={movieId} key={starId} onClick={click}>
+          <span id={starId}>⭐</span>
+        </Star>);
+
+      i++;
     }
-  }
+    while (i < 10) {
+      var starId = i;
+      stars.push(
+        <EmptyStar id={movieId} key={starId} onClick={click}>
+          <span id={starId}>☆</span>
+        </EmptyStar>)
 
-  render () {
-    return (
-      <RatingBar>
-        <Stars>
-          <Star id="star1">&#9734;</Star>
-          <Star id="star2">&#9734;</Star>
-          <Star id="star3">&#9734;</Star>
-          <Star id="star4">&#9734;</Star>
-          <Star id="star5">&#9734;</Star>
-          <Star id="star6">&#9734;</Star>
-          <Star id="star7">&#9734;</Star>
-          <Star id="star8">&#9734;</Star>
-          <Star id="star9">&#9734;</Star>
-          <Star id="star10">&#9734;</Star>
-        </Stars>
-        <Rating>{this.state.rating}</Rating>
+      i++
+    }
+
+  return (
+
+    <RatingBar>
+
+      <Stars>
+        {stars}
+      </Stars>
+      <Rating>{rating}
         <TopRating>/10</TopRating>
-      </RatingBar>
-    )
-  }
+      </Rating>
+
+    </RatingBar>
+  )
 
 }
 

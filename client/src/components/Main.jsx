@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import { ThemeProvider } from 'styled-components';
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 import Movies from './Movies.jsx';
 import Current from './Current.jsx';
@@ -13,14 +14,13 @@ const MainContainer = styled.div`
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: right;
-
 `
 const Header = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
 `
-const LearnMore = styled.a`
+const LearnMore = styled.span`
   font-size: 11px;
   width: 16.33;
   height: 13.33;
@@ -30,11 +30,12 @@ const LearnMore = styled.a`
   height: 15px;
 `
 
-const Title = styled.h2`
+const Title = styled.span`
   width: auto;
   height: auto;
   margin: 5px;
-  font: 24px Arial, sans-serif;
+  font-size: 24px;
+  font-family: Arial, sans-serif;
   color: #424242fa;
 
 `
@@ -75,13 +76,15 @@ class Main extends React.Component{
 
     this.state = {
       current: null,
-      movies: []
+      leftPageMovies: [],
+      rightPageMovies: []
 
     }
     this.clickMovie = this.clickMovie.bind(this);
     this.clickPageLeft = this.clickPageLeft.bind(this);
     this.clickPageRight = this.clickPageRight.bind(this);
     this.clickNextMovie = this.clickNextMovie.bind(this);
+    this.clickRating = this.clickRating.bind(this);
   }
 
   getAllMovies() {
@@ -96,11 +99,23 @@ class Main extends React.Component{
 
           this.setState({
             current: first,
-            movies: response.data.splice(1)
+            leftPageMovies: leftPage,
+            rightPageMovies: rightPage
           });
         }
       })
 
+  }
+
+  clickRating(e) {
+    e.preventDefault();
+
+    var rating = e.target.id;
+    var current = this.state.current;
+    current.starRating = rating;
+    this.setState({
+      current: current
+    })
   }
 
   clickMovie(e) {
@@ -157,12 +172,14 @@ class Main extends React.Component{
     this.getAllMovies();
   }
 
+
+
   renderCurrentMovie(){
     if (this.state.current === null) {
       return null;
     } else {
       return (
-        <Current id='current' movie={this.state.current} click={this.clickNextMovie}/>
+        <Current id='current' movie={this.state.current} click={this.clickNextMovie} starClick={this.clickRating}/>
       )
     }
   }
@@ -171,14 +188,25 @@ class Main extends React.Component{
     return (
       <div id='app'>
         <Header>
-          <Title>More Like This</Title>
+          <Title className='test'>More Like This</Title>
           <LearnMore><a></a>Learn More</LearnMore>
         </Header>
 
         <MainContainer className="maincomponent">
           <RelatedDiv>
             <RelatedMovies>
-              <Movies click={this.clickMovie} movies={this.state.displayPage === 'left' ? this.state.leftPageMovies : this.state.rightPageMovies} />
+
+              <TransitionGroup>
+                <CSSTransition
+                  key={this.state.displayPage === 'left'}
+                  timeout={500}
+                  classNames="pagechange">
+
+                  <Movies click={this.clickMovie} movies={this.state.displayPage === 'left' ? this.state.leftPageMovies : this.state.rightPageMovies} />
+
+                </CSSTransition>
+              </TransitionGroup>
+
               <PageTurners>
                 <PageTurnLeft onClick={this.clickPageLeft} page={this.state.displayPage}>◄ Prev 6 </PageTurnLeft>
                 <PageTurnRight onClick={this.clickPageRight} page={this.state.displayPage}> Next 6  ►</PageTurnRight>
