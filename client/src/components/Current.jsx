@@ -19,7 +19,8 @@ const Button = styled.button`
   margin-top: 7px;
   height: 17.778;
   width: 106.424;
-  background-color: 'yellow';
+  color: 'yellow';
+  cursor: pointer;
 `
 
 const MovieInfo = styled.div`
@@ -131,6 +132,7 @@ function Current (props) {
 
   var click = props.click;
   var clickStar = props.starClick;
+  var hover = props.hover;
 
   return (
     <CurrentDiv>
@@ -148,7 +150,7 @@ function Current (props) {
           <Rating>{rating}</Rating>
           <Genre>{genre}</Genre>
         </RatingGenre>
-        <StarRating rating={starRating} movieId={id} clickStar={clickStar}/>
+        <StarRating rating={starRating} movieId={id} clickStar={clickStar} hover={hover} />
         <Description>{description}</Description>
         <Directors><b>Directors: </b>{director}</Directors>
         <Stars><b>Stars: </b>{movieStars}</Stars>

@@ -27,11 +27,13 @@ const Star = styled.span`
   padding: 6px 1px 6px 1px;
   font-size: 8px;
   padding-bottom: 5px;
+  cursor: pointer;
 `
 const EmptyStar = styled.span`
   padding: 6px 1px 6px 1px;
   font-size: 13px;
   margin-bottom: 5px;
+  cursor: pointer;
 
 `
 
@@ -56,6 +58,7 @@ function StarRating (props) {
   var rating = props.rating;
   var click = props.clickStar;
   var movieId = props.movieId;
+  var hover = props.hover;
 
   var stars = [];
 
@@ -63,7 +66,7 @@ function StarRating (props) {
     while (i < rating) {
       var starId = i;
       stars.push(
-        <Star id={movieId} key={starId} onClick={click}>
+        <Star id={movieId} key={starId} onClick={click} onMouseOver={hover}>
           <span id={starId}>⭐</span>
         </Star>);
 

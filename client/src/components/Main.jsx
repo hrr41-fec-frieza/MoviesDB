@@ -20,14 +20,17 @@ const Header = styled.div`
   justify-content: space-between;
   width: 100%;
 `
-const LearnMore = styled.span`
+const LearnMore = styled.a`
   font-size: 11px;
+  color: blue;
+  text-decoration: underline;
   width: 16.33;
   height: 13.33;
   margin-right: 30px;
   padding: 5px;
   border-left: 1px dotted #CCC;
   height: 15px;
+  cursor: pointer;
 `
 
 const Title = styled.span`
@@ -48,6 +51,7 @@ const RelatedMovies = styled.div`
   flex-wrap: wrap;
   width: 246px;
   height: 238px;
+
 `
 const PageTurners = styled.div`
   margin: 4px;
@@ -59,11 +63,13 @@ const PageTurners = styled.div`
 `
 
 const PageTurnLeft = styled.span`
+  cursor: pointer;
   color: ${props => props.page === 'left' ? '#CCC' : 'blue'};
   margin-right: 5px;
 `
 
 const PageTurnRight = styled.span`
+  cursor: pointer;
   color: ${props => props.page === 'left' ? 'blue' : '#CCC'};
   margin-left: 5px;
 `
@@ -77,7 +83,8 @@ class Main extends React.Component{
     this.state = {
       current: null,
       leftPageMovies: [],
-      rightPageMovies: []
+      rightPageMovies: [],
+      displayPage: 'left'
 
     }
     this.clickMovie = this.clickMovie.bind(this);
@@ -85,6 +92,7 @@ class Main extends React.Component{
     this.clickPageRight = this.clickPageRight.bind(this);
     this.clickNextMovie = this.clickNextMovie.bind(this);
     this.clickRating = this.clickRating.bind(this);
+    this.hoverStar = this.hoverStar.bind(this);
   }
 
   getAllMovies() {
@@ -168,6 +176,10 @@ class Main extends React.Component{
     })
   }
 
+  hoverStar(e) {
+    e.preventDefault();
+
+  }
   componentDidMount(){
     this.getAllMovies();
   }
@@ -179,7 +191,7 @@ class Main extends React.Component{
       return null;
     } else {
       return (
-        <Current id='current' movie={this.state.current} click={this.clickNextMovie} starClick={this.clickRating}/>
+        <Current id='current' movie={this.state.current} click={this.clickNextMovie} starClick={this.clickRating} hover={this.hoverStar}/>
       )
     }
   }
@@ -198,9 +210,11 @@ class Main extends React.Component{
 
               <TransitionGroup>
                 <CSSTransition
-                  key={this.state.displayPage === 'left'}
-                  timeout={500}
-                  classNames="pagechange">
+                  in={ true }
+                  appear={ false }
+                  key={this.state.displayPage}
+                  timeout={ 5000 }
+                  classNames={ "pagechange" }>
 
                   <Movies click={this.clickMovie} movies={this.state.displayPage === 'left' ? this.state.leftPageMovies : this.state.rightPageMovies} />
 
