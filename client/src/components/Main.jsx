@@ -11,10 +11,64 @@ import Current from './Current.jsx';
 // }
 
 const MainContainer = styled.div`
+  width: 625px;
+  height: 265px;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: space-around;
+  justify-content: right;
+
+`
+const Header = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+`
+const LearnMore = styled.a`
+  font-size: 11px;
+  width: 16.33;
+  height: 13.33;
+  margin-right: 30px;
+  padding: 5px;
+  border-left: 1px dotted #CCC;
+  height: 15px;
+`
+
+const Title = styled.h2`
+  width: auto;
+  height: auto;
+  margin: 5px;
+  font: 24px Arial, sans-serif;
+  color: #424242fa;
+
+`
+const RelatedDiv = styled.div`
+  height: 290px;
+`
+
+const RelatedMovies = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  width: 246px;
+  height: 238px;
+`
+const PageTurners = styled.div`
+  margin: 4px;
+  padding: 5px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+`
+
+const PageTurnLeft = styled.a`
+  color: #CCC;
+  margin-right: 5px;
+`
+
+const PageTurnRight = styled.a`
+  color: blue;
+  margin-left: 5px;
 
 `
 
@@ -72,7 +126,7 @@ class Main extends React.Component{
       return null;
     } else {
       return (
-        <Current movie={this.state.current}/>
+        <Current id='current' movie={this.state.current}/>
       )
     }
   }
@@ -80,14 +134,26 @@ class Main extends React.Component{
   render() {
     return (
       <div id='app'>
-        <h1>More Like This</h1>
-        <MainContainer>
-          <div id='relatedmovies'>
-            {this.state.movies.map((movie, i) =>
-              <Movie key={i} movie={movie} clicky={this.clickMovie} />
-            )}
+        <Header>
+          <Title>More Like This</Title>
+          <LearnMore><a></a>Learn More</LearnMore>
+        </Header>
 
-          </div>
+        <MainContainer className="maincomponent">
+          <RelatedDiv>
+            <RelatedMovies>
+              {this.state.movies.map((movie, i) =>
+                <Movie key={i} movie={movie} clicky={this.clickMovie} />
+              )}
+              <PageTurners>
+                <PageTurnLeft>◄ Prev 6 </PageTurnLeft>
+                <PageTurnRight> Next 6  ►</PageTurnRight>
+              </PageTurners>
+
+            </RelatedMovies>
+
+          </RelatedDiv>
+
           {this.renderCurrentMovie()}
         </MainContainer>
       </div>
@@ -98,3 +164,4 @@ class Main extends React.Component{
 }
 
 export default Main;
+

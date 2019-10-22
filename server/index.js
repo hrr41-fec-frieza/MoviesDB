@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const db = require('../database/index.js');
+require('dotenv/config')
 
 const app = express();
 const port = process.env.PORT || 3030;
@@ -25,4 +26,5 @@ app.get('/api/morelikethis', (req,res) => {
 
 app.listen(port, () => {
   console.log('server listening on port: ', port)
+  console.log(process.env.MESSAGE);
 })
