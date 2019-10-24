@@ -97,7 +97,7 @@ class Main extends React.Component{
 
   getAllMovies() {
 
-    axios.get('/api/morelikethis')
+    axios.get('http://localhost:3030/api/morelikethis')
       .then(response => {
         if (response.status === 200) {
 
@@ -111,6 +111,8 @@ class Main extends React.Component{
             rightPageMovies: rightPage
           });
         }
+      }).catch(error => {
+        console.log(error.response)
       })
 
   }
