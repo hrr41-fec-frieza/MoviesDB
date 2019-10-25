@@ -12,6 +12,7 @@ const MoviesDiv = styled.div`
 const Movie = styled.div`
   width: 30%;
   margin: auto;
+`
 
 function Movies (props) {
   var movies = props.movies;

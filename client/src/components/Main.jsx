@@ -255,7 +255,6 @@ class Main extends React.Component{
 
                 </CSSTransition>
               </TransitionGroup>
-              <Movies click={this.clickMovie} movies={this.state.displayPage === 'left' ? this.state.leftPageMovies : this.state.rightPageMovies} />
 
               <PageTurners>
                 <PageTurnLeft onClick={this.clickPageLeft} page={this.state.displayPage}>◄ Prev 6 </PageTurnLeft>
