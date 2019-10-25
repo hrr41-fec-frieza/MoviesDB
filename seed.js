@@ -7,7 +7,6 @@ var ratings = ['G', 'PG', 'PG-13', 'R']
 var genres = ['Adventure', 'Romance', 'Comedy', 'Thriller', 'Horror', 'Kids', 'Scienc-fiction', 'Action', 'Drama', 'Documentary'];
 var imageCategories = ['abstract', 'animals', 'business', 'cats', 'city', 'food', 'nightlife','fashion', 'people', 'nature', 'sports', 'technics'];
 
-<<<<<<< HEAD
 var NewMovie = function () {
     this.movieKey = 0,
     this.title = faker.company.catchPhrase(),
@@ -19,7 +18,7 @@ var NewMovie = function () {
     this.director = "HO",
     this.stars = faker.name.findName() + ", " + faker.name.findName(),
     this.pictureURL = faker.image.city();
-=======
+
 var newMovies = [
   {
     "_id": "5daa22537ab70704ce0fee62",
@@ -189,13 +188,12 @@ var newMovies = [
     "stars": "Matt Cow, Other Matt Cow",
     "pictureURL": "https://mooviesdb.s3-us-west-2.amazonaws.com/c1.jpg",
     "__v": 0
->>>>>>> master
-  }
 
+  }
+]
 //empty database before reseeding
 db.dropDatabase();
 
-db.dropDatabase();
 
 for (var i = 100; i < 200; i++) {
   for (var j = 0; j < 12; j++) {
