@@ -128,10 +128,6 @@ class Main extends React.Component{
           var leftPage = response.data.slice(0, 6);
           var rightPage = response.data.slice(6, 12);
 
-          var first = response.data[0];
-          var leftPage = response.data.slice(0, 6);
-          var rightPage = response.data.slice(6, 12);
-
           this.setState({
             current: first,
             leftPageMovies: leftPage,
@@ -196,6 +192,7 @@ class Main extends React.Component{
     this.setState({
       displayPage: 'right'
     })
+    console.log(this.state)
   }
 
   clickPageLeft(e) {
@@ -206,10 +203,7 @@ class Main extends React.Component{
     })
   }
 
-  hoverStar(e) {
-    e.preventDefault();
 
-  }
   componentDidMount(){
     var path = location.href.slice(21);
     console.log('location.href: ', path)
