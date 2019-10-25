@@ -1,5 +1,6 @@
 import React, {Componenet} from 'react';
 import styled from 'styled-components';
+// const {styled} = window;
 
 
 const RatingBar = styled.div`
@@ -37,7 +38,7 @@ const EmptyStar = styled.span`
 
 `
 
-const Rating = styled.a`
+const Rating = styled.span`
   color: orange;
   margin-left: 5px;
   text-align: right;
@@ -47,7 +48,7 @@ const Rating = styled.a`
 
 `
 
-const TopRating = styled.a`
+const TopRating = styled.span`
   color: #CCC;
   font-size: 14px;
   padding-bottom: 5px;

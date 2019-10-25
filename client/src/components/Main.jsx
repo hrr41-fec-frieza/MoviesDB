@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+// const {styled} = window;
 import axios from 'axios';
-import { ThemeProvider } from 'styled-components';
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 import Movies from './Movies.jsx';
@@ -20,7 +20,7 @@ const Header = styled.div`
   justify-content: space-between;
   width: 100%;
 `
-const LearnMore = styled.a`
+const LearnMore = styled.span`
   font-size: 11px;
   color: blue;
   text-decoration: underline;
@@ -95,12 +95,31 @@ class Main extends React.Component{
     this.hoverStar = this.hoverStar.bind(this);
   }
 
-  getAllMovies() {
-
-    axios.get('http://localhost:3030/api/morelikethis')
+  getAllMovies(path) {
+  if (path ==='/') {
+     axios.get('http://localhost:3030/api/morelikethis')
       .then(response => {
-        if (response.status === 200) {
 
+        if (response.status === 202) {
+          var first = response.data[0];
+          var leftPage = response.data.slice(0, 6);
+          var rightPage = response.data.slice(6, 12);
+
+          this.setState({
+            current: first,
+            leftPageMovies: leftPage,
+            rightPageMovies: rightPage
+          });
+        }
+      }).catch(error => {
+        console.log(error.response)
+      })
+    } else {
+      path = path.slice(2);
+      axios.get(`http://localhost:3030/api/morelikethis/?id=${path}`)
+      .then(response => {
+
+        if (response.status === 202) {
           var first = response.data[0];
           var leftPage = response.data.slice(0, 6);
           var rightPage = response.data.slice(6, 12);
@@ -115,6 +134,7 @@ class Main extends React.Component{
         console.log(error.response)
       })
 
+    }
   }
 
   clickRating(e) {
@@ -183,7 +203,9 @@ class Main extends React.Component{
 
   }
   componentDidMount(){
-    this.getAllMovies();
+    var path = location.href.slice(21);
+    console.log('location.href: ', path)
+    this.getAllMovies(path);
   }
 
 

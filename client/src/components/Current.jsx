@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {ThemeProvider} from 'styled-components';
+// const {styled} = window;
 import StarRating from './StarRating.jsx';
 
 
@@ -121,7 +121,8 @@ function Current (props) {
   var id = props.movie._id;
   var picture = props.movie.pictureURL;
   var title = props.movie.title;
-  var year = props.movie.year;
+  var year = props.movie.year.toString().slice(0,4);
+  year = parseInt(year);
   var description = props.movie.description;
   var rating = props.movie.rating;
   var splitGenre = props.movie.genre.split(',');

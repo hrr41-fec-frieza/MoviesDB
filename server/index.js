@@ -9,10 +9,20 @@ const port = 3030;
 app.use(cors());
 
 app.use(express.static(__dirname + './../client/dist'));
+//
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}))
 
 
 app.get('/api/morelikethis', (req,res) => {
-  db.getAllMovies((err, movies) => {
+  if (req.url === '/api/morelikethis') {
+    movieKey = 100;
+  } else {
+    movieKey = req.query.id;
+  }
+
+  db.getAllMovies(movieKey, (err, movies) => {
+
     if (err) {
       res.sendStatus(404);
       console.log('app.get err: ', err);

@@ -10,6 +10,7 @@ db.once('open', function() {
 })
 
 let MovieSchema = mongoose.Schema({
+  movieKey: Number,
   title: {type: String, required: true},
   year: Number,
   rating: String,
@@ -23,8 +24,9 @@ let MovieSchema = mongoose.Schema({
 
 let Movie = mongoose.model('Movie', MovieSchema);
 
-const getAllMovies = (callback) => {
-  Movie.find((err, results) => {
+const getAllMovies = (movieKey, callback) => {
+
+  Movie.find( {"movieKey": movieKey}, (err, results) => {
     if (err) {
       callback(err, null);
     } else {
