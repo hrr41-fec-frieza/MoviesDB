@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+// const {styled} = window;
 
 const MoviesDiv = styled.div`
   display: flex;
@@ -11,8 +12,6 @@ const MoviesDiv = styled.div`
 const Movie = styled.div`
   width: 30%;
   margin: auto;
-
-`
 
 function Movies (props) {
   var movies = props.movies;

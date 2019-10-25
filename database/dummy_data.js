@@ -1,14 +1,173 @@
-[
-  {
-    "id": 1,
-    "title": "Heck Yeah the Movie",
-    "year": 1993,
-    "rating": "R",
-    "genre": "adventures of..",
-    "starRating": 10,
-    "description": "Haley figures out life... maybe",
-    "director": "HO",
-    "stars": "Me",
-    "picture": "data:image/jpeg;base64,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"
-  }
-]
+// var newMovies = [
+//   {
+//     "_id": "5daa22537ab70704ce0fee62",
+//     "title": "Cows THE MOVIE",
+//     "year": 1993,
+//     "rating": "R",
+//     "genre": "Adventure, Comedy",
+//     "starRating": 10,
+//     "description": "Cows make a movie. Cows make a movie. Cows make a movie. Cows make a movie. Cows make a movie. Cows make a movie. Cows make a movie. Cows make a movie. Cows make a movie. Cows make a movie. Cows make a movie. Cows make a movie. Cows make a movie. Cows make a movie. Cows make a movie.",
+//     "director": "HO",
+//     "stars": "Cow1, Cow2, Sally",
+//     "pictureURL": "https://mooviesdb.s3-us-west-2.amazonaws.com/3091466.large.jpg",
+//     "__v": 0
+//   },
+//   {
+//     "_id": "5daa22537ab70704ce0fee63",
+//     "title": "To Be Butchered Another Day",
+//     "year": 1994,
+//     "rating": "R",
+//     "genre": "adventure",
+//     "starRating": 8,
+//     "description": "Cow are back in town!",
+//     "director": "HO",
+//     "stars": "Cow1, Barry, Cow2",
+//     "pictureURL": "https://mooviesdb.s3-us-west-2.amazonaws.com/cow-1715829__340.jpg",
+//     "__v": 0
+//   },
+//   {
+//     "_id": "5daa22537ab70704ce0fee64",
+//     "title": "The Sound of Moo-sic",
+//     "year": 2019,
+//     "rating": "R",
+//     "genre": "Musical, Drama",
+//     "starRating": 9,
+//     "description": "The remaking of the classic 'Sound of Music', finally done properly.",
+//     "director": "HO",
+//     "stars": "Cowly, Cowsy",
+//     "pictureURL": "https://mooviesdb.s3-us-west-2.amazonaws.com/cow-2896329_960_720.jpg",
+//     "__v": 0
+//   },
+//   {
+//     "_id": "5daa22537ab70704ce0fee65",
+//     "title": "You Be My Patty, I'll Be Your Buns",
+//     "year": 2003,
+//     "rating": "R",
+//     "genre": "romance",
+//     "starRating": 7,
+//     "description": "The new titanic! Cow romance like never seen before.",
+//     "director": "HO",
+//     "stars": "Mr Cow, Mrs Cow",
+//     "pictureURL": "https://mooviesdb.s3-us-west-2.amazonaws.com/thjc-cow-2.jpg",
+//     "__v": 0
+//   },
+//   {
+//     "_id": "5daa22537ab70704ce0fee66",
+//     "title": "The Cowgalry",
+//     "year": 2011,
+//     "rating": "PG-13",
+//     "genre": "war",
+//     "starRating": 11,
+//     "description": "The Cowgalry goes off to war, but will everyone make it back safely?",
+//     "director": "HO",
+//     "stars": "CowCow, Mr C",
+//     "pictureURL": "https://mooviesdb.s3-us-west-2.amazonaws.com/tumblr_oplgjdcYJl1sgqqono1_500.jpg",
+//     "__v": 0
+//   },
+//   {
+//     "_id": "5daa22537ab70704ce0fee67",
+//     "title": "Cows 3: Pourin' Dat Milk",
+//     "year": 2007,
+//     "rating": "R",
+//     "genre": "adventure",
+//     "starRating": 8,
+//     "description": "Cows learn how to drink milk.",
+//     "director": "HO",
+//     "stars": "Sarah, The Other Sarah",
+//     "pictureURL": "https://mooviesdb.s3-us-west-2.amazonaws.com/new1.jpg",
+//     "__v": 0
+//   },
+//   {
+//     "_id": "5daa22537ab70704ce0fee68",
+//     "title": "Utterly Ridiculous",
+//     "year": 1999,
+//     "rating": "PG-13",
+//     "genre": "adventure",
+//     "starRating": 9,
+//     "description": "What?! REALLY!?",
+//     "director": "HO",
+//     "stars": "Matt Cow, Other Matt Cow",
+//     "pictureURL": "https://mooviesdb.s3-us-west-2.amazonaws.com/new2.jpg",
+//     "__v": 0
+//   },
+//   {
+//     "_id": "5daa22537ab70704ce0fee69",
+//     "title": "The Tails of Sir Loin",
+//     "year": 2011,
+//     "rating": "G",
+//     "genre": "Rom-Com",
+//     "starRating": 5,
+//     "description": "They've done it again! These gal-cows have left the field and are back out in search of their one utter love.",
+//     "director": "HO",
+//     "stars": "Missy Cow, Lady Cow",
+//     "pictureURL": "https://mooviesdb.s3-us-west-2.amazonaws.com/c6.jpg",
+//     "__v": 0
+//   },
+//   {
+//     "_id": "5daa22537ab70704ce0fee6a",
+//     "title": "Seen But Not Herd",
+//     "year": 2016,
+//     "rating": "PG-13",
+//     "genre": "adventure",
+//     "starRating": 9,
+//     "description": "What?! REALLY!?",
+//     "director": "HO",
+//     "stars": "Fergie, ",
+//     "pictureURL": "https://mooviesdb.s3-us-west-2.amazonaws.com/c5.jpg",
+//     "__v": 0
+//   },
+//   {
+//     "_id": "5daa22537ab70704ce0fee6b",
+//     "title": "High Steaks",
+//     "year": 2018,
+//     "rating": "PG-13",
+//     "genre": "adventure",
+//     "starRating": 9,
+//     "description": "What?! REALLY!?",
+//     "director": "HO",
+//     "stars": "Matt Cow, Other Matt Cow",
+//     "pictureURL": "https://mooviesdb.s3-us-west-2.amazonaws.com/c4.jpg",
+//     "__v": 0
+//   },
+//   {
+//     "_id": "5daa22537ab70704ce0fee6c",
+//     "title": "He is Not A-moosed",
+//     "year": 2014,
+//     "rating": "PG-13",
+//     "genre": "adventure",
+//     "starRating": 9,
+//     "description": "What?! REALLY!?",
+//     "director": "HO",
+//     "stars": "Matt Cow, Other Matt Cow",
+//     "pictureURL": "https://mooviesdb.s3-us-west-2.amazonaws.com/c3.jpg",
+//     "__v": 0
+//   },
+//   {
+//     "_id": "5daa22537ab70704ce0fee6d",
+//     "title": "Dont Steer Me Wrong",
+//     "year": 2003,
+//     "rating": "PG-13",
+//     "genre": "adventure",
+//     "starRating": 9,
+//     "description": "What?! REALLY!?",
+//     "director": "HO",
+//     "stars": "Matt Cow, Other Matt Cow",
+//     "pictureURL": "https://mooviesdb.s3-us-west-2.amazonaws.com/c2.jpg",
+//     "__v": 0
+//   },
+//   {
+//     "_id": "5daa22537ab70704ce0fee6e",
+//     "title": "Deja Moo",
+//     "year": 2019,
+//     "rating": "PG-13",
+//     "genre": "adventure",
+//     "starRating": 9,
+//     "description": "What?! REALLY!?",
+//     "director": "HO",
+//     "stars": "Matt Cow, Other Matt Cow",
+//     "pictureURL": "https://mooviesdb.s3-us-west-2.amazonaws.com/c1.jpg",
+//     "__v": 0
+//   }
+// ]
+
+//empty database before reseeding

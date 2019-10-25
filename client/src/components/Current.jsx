@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {ThemeProvider} from 'styled-components';
+// const {styled} = window;
 import StarRating from './StarRating.jsx';
 
 
@@ -19,7 +19,8 @@ const Button = styled.button`
   margin-top: 7px;
   height: 17.778;
   width: 106.424;
-  background-color: 'yellow';
+  color: 'yellow';
+  cursor: pointer;
 `
 
 const MovieInfo = styled.div`
@@ -74,7 +75,7 @@ const Rating = styled.span`
   border-radius: 3px;
   font-family: Verdana, Arial, sans-serif;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 12px;
   margin: 3px 3px;
   padding: 0;
 `
@@ -117,9 +118,11 @@ const Stars = styled.div`
 `
 
 function Current (props) {
+  var id = props.movie._id;
   var picture = props.movie.pictureURL;
   var title = props.movie.title;
-  var year = props.movie.year;
+  var year = props.movie.year.toString().slice(0,4);
+  year = parseInt(year);
   var description = props.movie.description;
   var rating = props.movie.rating;
   var splitGenre = props.movie.genre.split(',');
@@ -129,6 +132,10 @@ function Current (props) {
   var movieStars = props.movie.stars;
 
   var click = props.click;
+
+  var clickStar = props.starClick;
+  var hover = props.hover;
+
 
   return (
     <CurrentDiv>
@@ -146,7 +153,8 @@ function Current (props) {
           <Rating>{rating}</Rating>
           <Genre>{genre}</Genre>
         </RatingGenre>
-        <StarRating />
+        <StarRating rating={starRating} movieId={id} clickStar={clickStar} hover={hover} />
+
         <Description>{description}</Description>
         <Directors><b>Directors: </b>{director}</Directors>
         <Stars><b>Stars: </b>{movieStars}</Stars>
