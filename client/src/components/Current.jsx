@@ -120,7 +120,7 @@ const Stars = styled.div`
 function Current (props) {
   var id = props.movie._id;
   var picture = props.movie.pictureURL;
-  var title = props.movie.title;
+  var title = props.movie.title.slice(0, 25);
   var year = props.movie.year.toString().slice(0,4);
   year = parseInt(year);
   var description = props.movie.description;
@@ -153,7 +153,7 @@ function Current (props) {
           <Rating>{rating}</Rating>
           <Genre>{genre}</Genre>
         </RatingGenre>
-        <StarRating rating={starRating} movieId={id} clickStar={clickStar} hover={hover} />
+        <StarRating rating={starRating} movieId={id} clickStar={clickStar} />
 
         <Description>{description}</Description>
         <Directors><b>Directors: </b>{director}</Directors>
