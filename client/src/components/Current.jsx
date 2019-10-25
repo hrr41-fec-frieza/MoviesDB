@@ -75,11 +75,7 @@ const Rating = styled.span`
   border-radius: 3px;
   font-family: Verdana, Arial, sans-serif;
   font-weight: bold;
-<<<<<<< HEAD
   font-size: 12px;
-=======
-  font-size: 16px;
->>>>>>> master
   margin: 3px 3px;
   padding: 0;
 `
@@ -136,11 +132,10 @@ function Current (props) {
   var movieStars = props.movie.stars;
 
   var click = props.click;
-<<<<<<< HEAD
+
   var clickStar = props.starClick;
   var hover = props.hover;
-=======
->>>>>>> master
+
 
   return (
     <CurrentDiv>
@@ -158,11 +153,8 @@ function Current (props) {
           <Rating>{rating}</Rating>
           <Genre>{genre}</Genre>
         </RatingGenre>
-<<<<<<< HEAD
         <StarRating rating={starRating} movieId={id} clickStar={clickStar} hover={hover} />
-=======
-        <StarRating />
->>>>>>> master
+
         <Description>{description}</Description>
         <Directors><b>Directors: </b>{director}</Directors>
         <Stars><b>Stars: </b>{movieStars}</Stars>

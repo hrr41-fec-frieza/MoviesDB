@@ -1,9 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-<<<<<<< HEAD
 // const {styled} = window;
-=======
->>>>>>> master
 
 const MoviesDiv = styled.div`
   display: flex;
@@ -15,22 +12,11 @@ const MoviesDiv = styled.div`
 const Movie = styled.div`
   width: 30%;
   margin: auto;
-<<<<<<< HEAD
-`
 
 function Movies (props) {
   var movies = props.movies;
   var click = props.click;
 
-=======
-
-`
-
-function Movies (props) {
-  var movies = props.movies;
-  var click = props.click;
-
->>>>>>> master
   return (
     <MoviesDiv>
       {[...movies].map((movie, i) =>
@@ -43,8 +29,4 @@ function Movies (props) {
   )
 }
 
-<<<<<<< HEAD
 export default Movies;
-=======
-export default Movies;
->>>>>>> master

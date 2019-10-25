@@ -2,13 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 // const {styled} = window;
 import axios from 'axios';
-<<<<<<< HEAD
-import { CSSTransition, TransitionGroup } from "react-transition-group";
-=======
+
 import { ThemeProvider } from 'styled-components';
 import { CSSTransition } from 'react-transition-group';
 import { TransitionGroup } from 'react-transition-group';
->>>>>>> master
+
 
 import Movies from './Movies.jsx';
 import Current from './Current.jsx';
@@ -69,19 +67,13 @@ const PageTurners = styled.div`
 `
 
 const PageTurnLeft = styled.span`
-<<<<<<< HEAD
   cursor: pointer;
-=======
->>>>>>> master
   color: ${props => props.page === 'left' ? '#CCC' : 'blue'};
   margin-right: 5px;
 `
 
 const PageTurnRight = styled.span`
-<<<<<<< HEAD
   cursor: pointer;
-=======
->>>>>>> master
   color: ${props => props.page === 'left' ? 'blue' : '#CCC'};
   margin-left: 5px;
 `
@@ -276,7 +268,6 @@ class Main extends React.Component{
         </MainContainer>
       </div>
     );
-
   }
 }
 
