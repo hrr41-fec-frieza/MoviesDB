@@ -33,6 +33,7 @@
     "npm": "^6.11.3",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
+    "react-transition-group": "^4.3.0",
     "styled-components": "^4.4.0"
   },
   "devDependencies": {

@@ -2,7 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 // const {styled} = window;
 import axios from 'axios';
+<<<<<<< HEAD
 import { CSSTransition, TransitionGroup } from "react-transition-group";
+=======
+import { ThemeProvider } from 'styled-components';
+import { CSSTransition } from 'react-transition-group';
+import { TransitionGroup } from 'react-transition-group';
+>>>>>>> master
 
 import Movies from './Movies.jsx';
 import Current from './Current.jsx';
@@ -63,13 +69,19 @@ const PageTurners = styled.div`
 `
 
 const PageTurnLeft = styled.span`
+<<<<<<< HEAD
   cursor: pointer;
+=======
+>>>>>>> master
   color: ${props => props.page === 'left' ? '#CCC' : 'blue'};
   margin-right: 5px;
 `
 
 const PageTurnRight = styled.span`
+<<<<<<< HEAD
   cursor: pointer;
+=======
+>>>>>>> master
   color: ${props => props.page === 'left' ? 'blue' : '#CCC'};
   margin-left: 5px;
 `
@@ -82,17 +94,26 @@ class Main extends React.Component{
 
     this.state = {
       current: null,
+<<<<<<< HEAD
       leftPageMovies: [],
       rightPageMovies: [],
       displayPage: 'left'
+=======
+      displayPage: 'left',
+      leftPageMovies: [],
+      rightPageMovies: []
+>>>>>>> master
 
     }
     this.clickMovie = this.clickMovie.bind(this);
     this.clickPageLeft = this.clickPageLeft.bind(this);
     this.clickPageRight = this.clickPageRight.bind(this);
     this.clickNextMovie = this.clickNextMovie.bind(this);
+<<<<<<< HEAD
     this.clickRating = this.clickRating.bind(this);
     this.hoverStar = this.hoverStar.bind(this);
+=======
+>>>>>>> master
   }
 
   getAllMovies(path) {
@@ -124,10 +145,18 @@ class Main extends React.Component{
           var leftPage = response.data.slice(0, 6);
           var rightPage = response.data.slice(6, 12);
 
+          var first = response.data[0];
+          var leftPage = response.data.slice(0, 6);
+          var rightPage = response.data.slice(6, 12);
+
           this.setState({
             current: first,
             leftPageMovies: leftPage,
+<<<<<<< HEAD
             rightPageMovies: rightPage
+=======
+            rightPageMovies: rightPage,
+>>>>>>> master
           });
         }
       }).catch(error => {
@@ -162,6 +191,7 @@ class Main extends React.Component{
   clickNextMovie(e) {
 
     var currentIndex = this.state.displayPage === 'left' ? this.state.leftPageMovies.indexOf(this.state.current) : this.state.rightPageMovies.indexOf(this.state.current);
+<<<<<<< HEAD
 
     var next = this.state.displayPage === 'left' ? this.state.leftPageMovies[currentIndex + 1] : this.state.rightPageMovies[currentIndex + 1];
 
@@ -190,6 +220,36 @@ class Main extends React.Component{
     })
   }
 
+=======
+
+    var next = this.state.displayPage === 'left' ? this.state.leftPageMovies[currentIndex + 1] : this.state.rightPageMovies[currentIndex + 1];
+
+    if (next === undefined) {
+      this.state.displayPage === 'left' ?
+        this.setState({
+          displayPage: 'right',
+          current: this.state.rightPageMovies[0]
+        }) : this.setState({
+            displayPage: 'left',
+            current: this.state.leftPageMovies[0]
+        })
+    } else {
+      this.setState({
+        current: next
+      })
+    }
+
+  }
+
+  clickPageRight(e) {
+    e.preventDefault();
+
+    this.setState({
+      displayPage: 'right'
+    })
+  }
+
+>>>>>>> master
   clickPageLeft(e) {
     e.preventDefault();
 
@@ -215,7 +275,11 @@ class Main extends React.Component{
       return null;
     } else {
       return (
+<<<<<<< HEAD
         <Current id='current' movie={this.state.current} click={this.clickNextMovie} starClick={this.clickRating} hover={this.hoverStar}/>
+=======
+        <Current id='current' movie={this.state.current} click={this.clickNextMovie}/>
+>>>>>>> master
       )
     }
   }
@@ -224,13 +288,19 @@ class Main extends React.Component{
     return (
       <div id='app'>
         <Header>
+<<<<<<< HEAD
           <Title className='test'>More Like This</Title>
           <LearnMore><a></a>Learn More</LearnMore>
+=======
+          <Title>More Like This</Title>
+          <LearnMore><a>Learn More</a></LearnMore>
+>>>>>>> master
         </Header>
 
         <MainContainer className="maincomponent">
           <RelatedDiv>
             <RelatedMovies>
+<<<<<<< HEAD
 
               <TransitionGroup>
                 <CSSTransition
@@ -245,6 +315,9 @@ class Main extends React.Component{
                 </CSSTransition>
               </TransitionGroup>
 
+=======
+              <Movies click={this.clickMovie} movies={this.state.displayPage === 'left' ? this.state.leftPageMovies : this.state.rightPageMovies} />
+>>>>>>> master
               <PageTurners>
                 <PageTurnLeft onClick={this.clickPageLeft} page={this.state.displayPage}>◄ Prev 6 </PageTurnLeft>
                 <PageTurnRight onClick={this.clickPageRight} page={this.state.displayPage}> Next 6  ►</PageTurnRight>
