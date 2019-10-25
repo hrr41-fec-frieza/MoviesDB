@@ -147,7 +147,8 @@ class Main extends React.Component{
     e.preventDefault();
 
     this.setState({
-      displayPage: 'right'
+      displayPage: 'right',
+      current: this.state.rightPageMovies[0]
     })
   }
 
@@ -155,7 +156,8 @@ class Main extends React.Component{
     e.preventDefault();
 
     this.setState({
-      displayPage: 'left'
+      displayPage: 'left',
+      current: this.state.leftPageMovies[0]
     })
   }
 
