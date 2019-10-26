@@ -56,6 +56,7 @@ const RelatedMovies = styled.div`
   width: 246px;
   height: 238px;
 
+
 `
 const PageTurners = styled.div`
   margin: 4px;
