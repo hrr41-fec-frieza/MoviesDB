@@ -78,7 +78,9 @@ const PageTurnRight = styled.span`
   color: ${props => props.page === 'left' ? 'blue' : '#CCC'};
   margin-left: 5px;
 `
-
+const MoviesContainer = styled.div`
+  overflow: hidden;
+`
 
 
 class Main extends React.Component{
@@ -238,19 +240,22 @@ class Main extends React.Component{
         <MainContainer className="maincomponent">
           <RelatedDiv>
             <RelatedMovies>
-
-              <TransitionGroup>
+            <MoviesContainer>
+            <TransitionGroup>
                 <CSSTransition
                   in={ true }
                   appear={ false }
                   key={this.state.displayPage}
-                  timeout={ 5000 }
+                  timeout={ 400 }
                   classNames={ "pagechange" }>
 
                   <Movies click={this.clickMovie} movies={this.state.displayPage === 'left' ? this.state.leftPageMovies : this.state.rightPageMovies} />
 
                 </CSSTransition>
               </TransitionGroup>
+
+            </MoviesContainer>
+
 
               <PageTurners>
                 <PageTurnLeft onClick={this.clickPageLeft} page={this.state.displayPage}>◄ Prev 6 </PageTurnLeft>

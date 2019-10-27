@@ -63,20 +63,20 @@ function StarRating (props) {
 
   var stars = [];
 
-    var i = 0;
-    while (i < rating) {
-      var starId = i + 1;
+    var i = 1;
+    while (i <= rating) {
+      var starId = i;
       stars.push(
-        <Star id={movieId} key={starId} onClick={click} onMouseOver={hover}>
+        <Star id={starId} key={starId} onClick={click} onMouseOver={hover}>
           <span id={starId}>⭐</span>
         </Star>);
 
       i++;
     }
-    while (i < 10) {
-      var starId = i + 1;
+    while (i <= 10) {
+      var starId = i;
       stars.push(
-        <EmptyStar id={movieId} key={starId} onClick={click}>
+        <EmptyStar id={starId} key={starId} onClick={click}>
           <span id={starId}>☆</span>
         </EmptyStar>)
 
