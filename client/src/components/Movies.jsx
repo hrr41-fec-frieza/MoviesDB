@@ -8,6 +8,7 @@ const MoviesDiv = styled.div`
   flex-wrap: wrap;
   width: 246px;
   height: 238px;
+  overflow: hidden;
 `
 const Movie = styled.div`
   width: 30%;

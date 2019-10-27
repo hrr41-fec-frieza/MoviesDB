@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const db = require('../database/index.js');
 require('dotenv/config')
 const cors = require('cors');
+var morgan = require('morgan');
 
 const app = express();
 const port = 3030;
@@ -33,7 +34,7 @@ app.get('/api/morelikethis', (req,res) => {
     }
   })
 })
-
+app.use(morgan('dev'));
 
 app.listen(port, () => {
   console.log(process.env.MESSAGE);
