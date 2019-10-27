@@ -19,7 +19,6 @@ const Button = styled.button`
   margin-top: 7px;
   height: 17.778;
   width: 106.424;
-  color: 'yellow';
   cursor: pointer;
 `
 
@@ -28,9 +27,9 @@ const MovieInfo = styled.div`
   height: 265px;
   margin: 5px;
   padding: 5px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  display: block;
+  /* flex-direction: column;
+  justify-content: flex-start; */
 `
 
 const CurrentDiv = styled.div`
@@ -46,6 +45,7 @@ const Title = styled.span`
   margin: 1px 5px;
   font-size: 13px;
   float: left;
+  line-height: 0.8;
   color: #136CB2;
   font-weight: bolder;
   font-family: Verdana, Arial, sans-serif;
@@ -58,13 +58,14 @@ const Year = styled.span`
   font-size: 13px;
   line-height: 13px;
   color: #999;
-  float: left;
+
   font-family: Verdana, Arial, sans-serif;
 `
 const TitleYear = styled.div`
-  width: 215px;
+  width: 100%;
   height: 24px;
   margin-bottom: 5px;
+  position:relative;
 `
 
 const Rating = styled.span`
@@ -80,7 +81,7 @@ const Rating = styled.span`
   padding: 0;
 `
 const Genre = styled.span`
-  font-size: 13px;
+  font-size: 10px;
   color: #999;
   font-family: Verdana, Arial, sans-serif;
   margin: 5px;
@@ -90,14 +91,17 @@ const Genre = styled.span`
 const RatingGenre = styled.div`
   flex-basis: content;
   margin: 3px;
+  position:relative;
 `
 
-const Description = styled.p`
+const Description = styled.div`
   font-family: Verdana, Arial, sans-serif;
   color: #333;
   font-size: 11px;
-  height: 171.997;
-  width: 215;
+  height: 120px;
+  width: 215px;
+  overflow: hidden;
+
 
 `
 
@@ -107,6 +111,7 @@ const Directors = styled.div`
   font-size: 11px;
   margin:0px;
   padding:0px;
+  position:relative;
 `
 
 const Stars = styled.div`
@@ -115,6 +120,7 @@ const Stars = styled.div`
   font-size: 11px;
   margin:0px;
   padding:0px;
+  position:relative;
 `
 
 function Current (props) {
@@ -141,8 +147,8 @@ function Current (props) {
     <CurrentDiv>
       <CurrentMovie id='current'>
         <img src={picture} height="100%" width="100%" />
-        <Button>Add to Watchlist</Button>
-        <Button onClick={click}> Next >> </Button>
+        <Button className='addToBtn'>Add to Watchlist</Button>
+        <Button className='nextBtn' onClick={click}> Next >> </Button>
       </CurrentMovie>
       <MovieInfo>
         <TitleYear>
