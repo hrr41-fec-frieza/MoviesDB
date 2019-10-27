@@ -105,7 +105,8 @@ class Main extends React.Component{
      axios.get('http://localhost:3030/api/morelikethis')
       .then(response => {
 
-        if (response.status === 202) {
+        if (response.status === 202 || 200) {
+
           var first = response.data[0];
           var leftPage = response.data.slice(0, 6);
           var rightPage = response.data.slice(6, 12);
@@ -123,12 +124,9 @@ class Main extends React.Component{
       path = path.slice(2);
       axios.get(`http://localhost:3030/api/morelikethis/?id=${path}`)
       .then(response => {
+        console.log('response data', response.data)
 
         if (response.status === 202) {
-          var first = response.data[0];
-          var leftPage = response.data.slice(0, 6);
-          var rightPage = response.data.slice(6, 12);
-
           var first = response.data[0];
           var leftPage = response.data.slice(0, 6);
           var rightPage = response.data.slice(6, 12);
@@ -225,7 +223,7 @@ class Main extends React.Component{
     } else {
       return (
 
-        <Current id='current' movie={this.state.current} click={this.clickNextMovie} starClick={this.clickRating} hover={this.hoverStar}/>
+        <Current id='current' movie={this.state.current} click={this.clickNextMovie} starClick={this.clickRating}/>
       )
     }
   }
