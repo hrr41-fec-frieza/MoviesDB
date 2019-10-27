@@ -13,6 +13,7 @@ const MoviesDiv = styled.div`
 const Movie = styled.div`
   width: 30%;
   margin: auto;
+  cursor: pointer;
 `
 
 function Movies (props) {

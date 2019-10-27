@@ -11,6 +11,7 @@ const CurrentMovie =styled.div`
   display:flex;
   flex-direction: column;
   box-shadow: 3px 3px 5px #B0B0B0;
+  cursor: pointer;
 `
 
 const Button = styled.button`
@@ -28,8 +29,7 @@ const MovieInfo = styled.div`
   margin: 5px;
   padding: 5px;
   display: block;
-  /* flex-direction: column;
-  justify-content: flex-start; */
+
 `
 
 const CurrentDiv = styled.div`
@@ -45,10 +45,11 @@ const Title = styled.span`
   margin: 1px 5px;
   font-size: 13px;
   float: left;
-  line-height: 0.8;
+  line-height: 0.9;
   color: #136CB2;
   font-weight: bolder;
   font-family: Verdana, Arial, sans-serif;
+  cursor: pointer;
 
 `
 const Year = styled.span`
@@ -56,7 +57,6 @@ const Year = styled.span`
   height: 15px;
   margin: 1px 5px;
   font-size: 13px;
-  line-height: 13px;
   color: #999;
 
   font-family: Verdana, Arial, sans-serif;
