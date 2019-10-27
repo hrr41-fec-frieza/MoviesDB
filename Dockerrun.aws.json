@@ -1,0 +1,12 @@
+{
+  "AWSEBDockerrunVersion": "1",
+  "Image": {
+    "Name": "ho0514/mooviesdb-more-like-this",
+    "Update": "true"
+  },
+  "Ports": [
+    {
+      "ContainerPort": "3030"
+    }
+  ]
+}

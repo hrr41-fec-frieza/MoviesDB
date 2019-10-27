@@ -56,6 +56,7 @@ const RelatedMovies = styled.div`
   width: 246px;
   height: 238px;
 
+
 `
 const PageTurners = styled.div`
   margin: 4px;
@@ -194,7 +195,8 @@ class Main extends React.Component{
     e.preventDefault();
 
     this.setState({
-      displayPage: 'right'
+      displayPage: 'right',
+      current: this.state.rightPageMovies[0]
     })
   }
 
@@ -202,7 +204,8 @@ class Main extends React.Component{
     e.preventDefault();
 
     this.setState({
-      displayPage: 'left'
+      displayPage: 'left',
+      current: this.state.leftPageMovies[0]
     })
   }
 
@@ -253,7 +256,6 @@ class Main extends React.Component{
 
                 </CSSTransition>
               </TransitionGroup>
-              <Movies click={this.clickMovie} movies={this.state.displayPage === 'left' ? this.state.leftPageMovies : this.state.rightPageMovies} />
 
               <PageTurners>
                 <PageTurnLeft onClick={this.clickPageLeft} page={this.state.displayPage}>◄ Prev 6 </PageTurnLeft>
