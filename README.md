@@ -16,7 +16,10 @@
 
 ## Usage
 
-> Some usage instructions
+> Server runs on localhost:3030
+
+> To view relevant movies for different pages:
+  localhost:3030/?id={ Number 100-199 }
 
 ## Requirements
 
@@ -25,9 +28,7 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 - Node 6.13.0
 - etc
 
-## Development
-
-### Installing Dependencies
+### Setting Up Environment
 
 1. From within the root directory:
 
