@@ -93,70 +93,76 @@ class Main extends React.Component{
       rightPageMovies: [],
       displayPage: 'left'
     }
+
     this.clickMovie = this.clickMovie.bind(this);
     this.clickPageLeft = this.clickPageLeft.bind(this);
     this.clickPageRight = this.clickPageRight.bind(this);
     this.clickNextMovie = this.clickNextMovie.bind(this);
-
     this.clickRating = this.clickRating.bind(this);
   }
 
-  getAllMovies(path) {
+
+  //retrieve related movies from db
+  getAllMovies (path) {
   if (path ==='/') {
      axios.get('http://localhost:3030/api/morelikethis')
       .then(response => {
 
-        if (response.status === 202 || 200) {
-
-          var first = response.data[0];
-          var leftPage = response.data.slice(0, 6);
-          var rightPage = response.data.slice(6, 12);
-
-          this.setState({
-            current: first,
-            leftPageMovies: leftPage,
-            rightPageMovies: rightPage
-          });
+        if (response.status === 202) {
+          this.updateState(response);
         }
+
       }).catch(error => {
         console.log(error.response)
       })
+
+
+    //if specified id
     } else {
-      path = path.slice(2);
+      path = path.slice(5);
       axios.get(`http://localhost:3030/api/morelikethis/?id=${path}`)
       .then(response => {
-        console.log('response data', response.data)
 
         if (response.status === 202) {
-          var first = response.data[0];
-          var leftPage = response.data.slice(0, 6);
-          var rightPage = response.data.slice(6, 12);
-
-          this.setState({
-            current: first,
-            leftPageMovies: leftPage,
-            rightPageMovies: rightPage
-          });
+          this.updateState(response);
         }
+
       }).catch(error => {
         console.log(error.response)
       })
-
     }
   }
 
-  clickRating(e) {
+
+  updateState (response) {
+    var first = response.data[0];
+          var leftPage = response.data.slice(0, 6);
+          var rightPage = response.data.slice(6, 12);
+
+          this.setState({
+            current: first,
+            leftPageMovies: leftPage,
+            rightPageMovies: rightPage
+          });
+  }
+
+
+  //change star rating on click
+  clickRating (e) {
     e.preventDefault();
 
     var rating = e.target.id;
     var current = this.state.current;
     current.starRating = rating;
+
     this.setState({
       current: current
     })
   }
 
-  clickMovie(e) {
+
+  //Display movie and details on click
+  clickMovie (e) {
     e.preventDefault();
     var movieId = e.target.id;
 
@@ -167,12 +173,14 @@ class Main extends React.Component{
     })
   }
 
-  clickNextMovie(e) {
 
+  //"Next" button to move to next related movie
+  clickNextMovie (e) {
     var currentIndex = this.state.displayPage === 'left' ? this.state.leftPageMovies.indexOf(this.state.current) : this.state.rightPageMovies.indexOf(this.state.current);
 
     var next = this.state.displayPage === 'left' ? this.state.leftPageMovies[currentIndex + 1] : this.state.rightPageMovies[currentIndex + 1];
 
+    //if at end of current page, move to next page
     if (next === undefined) {
       this.state.displayPage === 'left' ?
         this.setState({
@@ -187,20 +195,22 @@ class Main extends React.Component{
         current: next
       })
     }
-
   }
 
-  clickPageRight(e) {
+
+  //"Next 6" button
+  clickPageRight (e) {
     e.preventDefault();
 
     this.setState({
       displayPage: 'right',
       current: this.state.rightPageMovies[0]
     })
-    console.log(this.state)
   }
 
-  clickPageLeft(e) {
+
+  //"Prev 6" button
+  clickPageLeft (e) {
     e.preventDefault();
 
     this.setState({
@@ -210,22 +220,25 @@ class Main extends React.Component{
   }
 
 
-  componentDidMount(){
-    var path = location.href.slice(21);
-    console.log('location.href: ', path)
-    this.getAllMovies(path);
-  }
-
-  renderCurrentMovie(){
+  //set movie to focus on (with details/info)
+  renderCurrentMovie () {
+    //display none before retrieved from db
     if (this.state.current === null) {
       return null;
     } else {
       return (
-
         <Current id='current' movie={this.state.current} click={this.clickNextMovie} starClick={this.clickRating}/>
       )
     }
   }
+
+
+  //When component mounts, get path from url, and get movies from db
+  componentDidMount () {
+    var path = location.href.slice(21);
+    this.getAllMovies(path);
+  }
+
 
   render() {
     return (
@@ -240,22 +253,22 @@ class Main extends React.Component{
         <MainContainer className="maincomponent">
           <RelatedDiv>
             <RelatedMovies>
-            <MoviesContainer>
-            <TransitionGroup>
-                <CSSTransition
-                  in={ true }
-                  appear={ false }
-                  key={this.state.displayPage}
-                  timeout={ 400 }
-                  classNames={ "pagechange" }>
 
-                  <Movies click={this.clickMovie} movies={this.state.displayPage === 'left' ? this.state.leftPageMovies : this.state.rightPageMovies} />
+              <MoviesContainer>
+                <TransitionGroup>
+                  <CSSTransition
 
-                </CSSTransition>
-              </TransitionGroup>
+                    in={ true }
+                    appear={ false }
+                    key={this.state.displayPage}
+                    timeout={ 400 }
+                    classNames={ "pagechange" }>
 
-            </MoviesContainer>
+                    <Movies click={this.clickMovie} movies={this.state.displayPage === 'left' ? this.state.leftPageMovies : this.state.rightPageMovies} />
 
+                  </CSSTransition>
+                </TransitionGroup>
+              </MoviesContainer>
 
               <PageTurners>
                 <PageTurnLeft onClick={this.clickPageLeft} page={this.state.displayPage}>◄ Prev 6 </PageTurnLeft>
@@ -263,7 +276,6 @@ class Main extends React.Component{
               </PageTurners>
 
             </RelatedMovies>
-
           </RelatedDiv>
 
           {this.renderCurrentMovie()}
