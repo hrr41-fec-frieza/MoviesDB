@@ -82,7 +82,6 @@ const MoviesContainer = styled.div`
   overflow: hidden;
 `
 
-
 class Main extends React.Component{
   constructor(props) {
     super(props);
