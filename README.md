@@ -29,23 +29,24 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 
 ### Installing Dependencies
 
-From within the root directory:
+1. From within the root directory:
 
 ```sh
 npm install -g webpack
 npm install
 ```
-Seed database:
+
+2. Seed database:
 ```sh
 npm run seed-db
 ```
 
-Build bundle with webpack:
+3. Build bundle with webpack:
 ```sh
 npm run build
 ```
 
-Start server on localhost:3030 :
+4. Start server on localhost:3030 :
 ```sh
 npm start
 ```
