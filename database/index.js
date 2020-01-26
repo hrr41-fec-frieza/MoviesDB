@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/morelikethis');
 
-
 const db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection error:'));

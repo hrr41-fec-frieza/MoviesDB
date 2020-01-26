@@ -15,14 +15,13 @@ var NewMovie = function () {
     this.genre = genres[Math.floor(Math.random()*genres.length)] + ', ' + genres[Math.floor(Math.random()*genres.length)] + ', ' + genres[Math.floor(Math.random()*genres.length)],
     this.starRating = (Math.floor(Math.random()*10)),
     this.description = faker.lorem.paragraph(),
-    this.director = "HO",
+    this.director = "H.O.",
     this.stars = faker.name.findName() + ", " + faker.name.findName(),
     this.pictureURL = `https://picsum.photos/id/${Math.floor(Math.random()*200)}/200/300`
 
 }
 //empty database before reseeding
 db.dropDatabase();
-
 
 for (var i = 100; i < 200; i++) {
   for (var j = 0; j < 12; j++) {
