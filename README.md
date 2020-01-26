@@ -19,7 +19,7 @@
 > Server runs on localhost:3030
 
 > To view relevant movies for different pages:
-  localhost:3030/?id={ Number 100-199 }
+  http://localhost:3030/?id={ Any number 100-199 }
 
 ## Requirements
 
