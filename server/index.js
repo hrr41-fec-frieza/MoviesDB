@@ -1,7 +1,8 @@
+require('dotenv/config');
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const db = require('../database/index.js');
-require('dotenv/config')
 const cors = require('cors');
 var morgan = require('morgan');
 
@@ -10,7 +11,6 @@ const port = 3030;
 app.use(cors());
 
 app.use(express.static(__dirname + './../client/dist'));
-//
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}))
 
@@ -28,7 +28,6 @@ app.get('/api/morelikethis', (req,res) => {
       res.sendStatus(404);
       console.log('app.get err: ', err);
     } else {
-      console.log('app.get success');
       res.status(202);
       res.send(movies);
     }
