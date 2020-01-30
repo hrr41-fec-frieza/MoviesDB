@@ -37,7 +37,7 @@ npm install -g webpack
 npm install
 ```
 
-2. Seed mongoD:
+2. Seed mongoDB:
 ```sh
 npm run seed-db
 ```
